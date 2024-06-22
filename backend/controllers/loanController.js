@@ -39,3 +39,22 @@ exports.getLoans = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+exports.updateLoan = async (req, res) => {
+  try {
+    const updatedLoan = await Loan.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedLoan);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteLoan = async (req, res) => {
+  try {
+    await Loan.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Loan deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
