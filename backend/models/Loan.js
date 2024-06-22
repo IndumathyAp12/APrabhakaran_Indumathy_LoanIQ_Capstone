@@ -9,4 +9,8 @@ const loanSchema = new mongoose.Schema({
   totalInterest: { type: Number, required: true }
 });
 
+
+// Added Indexes :
+loanSchema.index({ principal: 1 }); 
+
 module.exports = mongoose.model('Loan', loanSchema);
