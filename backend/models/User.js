@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { userSchema, model } = require('../config/db-connection');
+
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
@@ -22,4 +24,4 @@ userSchema.methods.comparePassword = async function(password) {
 //Added Indexes:
 userSchema.index({ username: 1 }); 
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = model('User', userSchema);
